@@ -19,6 +19,8 @@ jobs:
           use_insecure_cipher: true
           script: |
             cd ~/lukman
+            cp config.php /tmp/lukman_config.php.bak 2>/dev/null || true
             git fetch origin
             git reset --hard origin/main
+            cp /tmp/lukman_config.php.bak config.php 2>/dev/null || true
             echo "Deployed at $(date)"
