@@ -1,5 +1,12 @@
 # ─── Lukman PS Apache Config ────────────────────────────────────────────────
 
+# Force HTTPS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
 # Block direct access to sensitive non-public files
 <FilesMatch "\.(md|sql|sh|log|env|bak|backup)$">
     Order deny,allow
@@ -7,7 +14,7 @@
 </FilesMatch>
 
 # Custom 404 error page
-ErrorDocument 404 /lukman-ps/404.php
+ErrorDocument 404 /404.php
 
 # Protect config and function files
 <FilesMatch "^(config|functions|config-production)\.php$">
