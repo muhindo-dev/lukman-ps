@@ -1,0 +1,26 @@
+# ─── Lukman PS Apache Config ────────────────────────────────────────────────
+
+# Block direct access to sensitive non-public files
+<FilesMatch "\.(md|sql|sh|log|env|bak|backup)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Custom 404 error page
+ErrorDocument 404 /lukman-ps/404.php
+
+# Protect config and function files
+<FilesMatch "^(config|functions|config-production)\.php$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /config.php
+Disallow: /functions.php
+Disallow: /enroll-production.php
+Disallow: /donate-process.php
+Disallow: /donate-verify.php
+Disallow: /donate-confirm.php
+Disallow: /donate-payment.php
+Disallow: /donation-ipn.php
+Disallow: /setup.php
+Disallow: /test-*.php
+Disallow: /logs/
+
+Sitemap: https://lukmanps.ac.ug/sitemap.php
