@@ -1,0 +1,23 @@
+name: Deploy to lukmanps.ne.ug
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH (git pull on server)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 162.241.194.81
+          username: schooics
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd ~/lukman
+            git fetch origin
+            git reset --hard origin/main
+            echo "Deployed at $(date)"
