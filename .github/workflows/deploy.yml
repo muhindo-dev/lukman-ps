@@ -16,6 +16,7 @@ jobs:
           host: 162.241.194.81
           username: schooics
           password: ${{ secrets.SSH_PASSWORD }}
+          use_insecure_cipher: true
           script: |
             cd ~/lukman
             git fetch origin
